@@ -1,21 +1,19 @@
 
-// You should implement your task here.
 
-module.exports = function towelSort(matrix) {
-  let m2 = [];
-  for (let i = 0; i != matrix.length; i++){
-    if (i % 2 == 0) {
-      m2 = m2.concat(matrix[i].reverse);
+  module.exports = function towelSort(matrix) {
+    var result = [];
+    if (matrix === undefined) return result;
+    for (var i = 0; i < matrix.length; ++i){
+      if(i % 2 === 0) {
+        for (var odd = 0; odd < matrix[i].length; ++odd){
+          result.push(matrix[i][odd]);
+        }
+      }
+      else {
+        for (var even = matrix[i].length-1; even >= 0; --even){
+          result.push(matrix[i][even]);
+        }
+      }
     }
-    else if (let i = 0; i != matrix.length; i++) {
-      m2 = m2.concat(matrix[i]);
-    }
-  }
-
-  return m2;
-}
-console.log(towelSort([
-  [1, 2, 3],
-  [4, 5, 6],
-  [7, 8, 9],
-]));
+    return result;
+};
